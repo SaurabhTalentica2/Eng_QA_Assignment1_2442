@@ -1,0 +1,18 @@
+As a patient, I want to book doctor appointments on the health platform and sync them with my Google or Outlook calendar, so that my appointments stay up to date across tools.
+
+Acceptance Criteria:
+- Patients can view a doctor's available slots (from the doctor's synced calendar plus manual inputs)
+- Patients select a time slot and confirm with a single click
+- A confirmation email and calendar invite are sent on booking
+- Doctors authorize calendar access once via OAuth2 (Google and Microsoft); tokens are stored encrypted and refreshed
+- Busy slots read from the doctor's calendar are marked unavailable
+- Confirmed appointments are written to the doctor's calendar
+- Patients and doctors can cancel or reschedule; sync updates reflect within 5 minutes
+- Conflict checks are required before confirmation
+- Must comply with HIPAA; a consent log is maintained for each doctor's authorization
+- Email reminders are sent 24h and 1h before the appointment
+
+Edge Conditions:
+- Calendar token expires and requires a resync flow
+- Timezone mismatch falls back to the patient's timezone
+- Doctor deletes a synced calendar event, so the appointment must be flagged
